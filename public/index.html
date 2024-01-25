@@ -75,16 +75,18 @@
 </div>
 
 <script>
-    var tablinks=document.getElementsByClassName("tab-links");
-    var tabcontents=document.getElementsByClassName("tab-contents");
-
-    function opentab(tabname){
-        for(tablink of tablinks){
-            tablink.classList.remove("active-link");
-
-            for(tabcontent of tabcontents){
-            tabcontent.classList.remove("active-tab");
+    function opentab(propertyId){
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-contents");
+        for(i=0; i<tabcontent.length; i++){
+            tabcontent[i].style.display = "none";
         }
+        tablinks = document.getElementsByClassName("tab-links");
+        for(i=0; i<tablinks.length; i++){
+            tablinks[i].className = tablinks[i].className.replace("active-link", "");
+        }
+        document.getElementById(propertyId).style.display = "block";
+        event.currentTarget.className += " active-link";
     }
 </script>
 
